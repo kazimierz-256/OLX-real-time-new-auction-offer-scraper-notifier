@@ -1,0 +1,21 @@
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\OLX_Parser.csprojResolveAssemblyReference.cache
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\MainWindow.g.cs
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\App.g.cs
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\MainWindow.baml
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\OLX_Parser.Properties.Resources.resources
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\OLX_Parser.csproj.GenerateResource.Cache
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\LargeImage\EnlargedImage.g.cs
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\LargeImage\EnlargedImage.baml
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\bin\Debug\Notify OLX.exe.config
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\bin\Debug\Notify OLX.exe.manifest
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\bin\Debug\Notify OLX.application
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\bin\Debug\Notify OLX.exe
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\bin\Debug\Notify OLX.pdb
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\Notify OLX_MarkupCompile.cache
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\Notify OLX_MarkupCompile.lref
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\Notify OLX.g.resources
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\Notify OLX.exe.manifest
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\Notify OLX.application
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\Notify OLX.exe
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\Notify OLX.pdb
+C:\Users\Kazimierz\Documents\Visual Studio 2015\Projects\CUSTOM\OLX_Parser\OLX_Parser\obj\Debug\GeneratedInternalTypeHelper.g.cs

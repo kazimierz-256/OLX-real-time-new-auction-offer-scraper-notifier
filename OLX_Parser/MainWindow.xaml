@@ -1,0 +1,359 @@
+﻿<Window x:Class="OLX_Parser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OLX_Parser"
+        mc:Ignorable="d"
+        Title="Notify OLX" MinHeight="500" MinWidth="400" Width="500" Height="700" Icon="notifyolx.ico"
+        FontFamily="Segoe UI Light" WindowStartupLocation="CenterScreen" UseLayoutRounding="True" SnapsToDevicePixels="True"
+        Closing="Window_Closing" ResizeMode="CanResizeWithGrip" MouseMove="Window_MouseMove" MouseDown="Drag">
+    <Window.Resources>
+        <local:EnlargeOLXImageConverter x:Key="EnlargeOLXImageConverter" />
+        <local:DateTimeNowConverter x:Key="DateTimeNowConverter" />
+        <local:DateTimeNowColorConverter x:Key="DateTimeNowColorConverter" />
+
+        <SolidColorBrush x:Key="OK" Color="#53d926"/>
+        <SolidColorBrush x:Key="OK_Bright" Color="#98e87d"/>
+        <SolidColorBrush x:Key="OK_Dark" Color="#328217"/>
+        <SolidColorBrush x:Key="OK_Text" Color="#ddf7d4"/>
+
+        <SolidColorBrush x:Key="Warning" Color="#d92626"/>
+        <SolidColorBrush x:Key="Warning_Bright" Color="#e87d7d"/>
+        <SolidColorBrush x:Key="Warning_Dark" Color="#821717"/>
+        <SolidColorBrush x:Key="Warning_Text" Color="#f7d4d4"/>
+
+        <SolidColorBrush x:Key="Machine" Color="#73798c"/>
+        <SolidColorBrush x:Key="Machine_Bright_Ultra" Color="#e3e4e8"/>
+        <SolidColorBrush x:Key="Machine_Bright" Color="#abaeba"/>
+        <SolidColorBrush x:Key="Machine_Dark" Color="#454854"/>
+        <SolidColorBrush x:Key="Machine_Text" Color="#17181c"/>
+
+        <Style x:Key="Classic_ScrollViewer" TargetType="ScrollViewer">
+            <Setter Property="CanContentScroll" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <EventSetter Event="PreviewMouseWheel" Handler="ScrollViewer_PreviewMouseWheel"/>
+        </Style>
+
+        <Style TargetType="{x:Type DataGridRow}">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#f1f2f4" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="AlternationCount" Value="2"/>
+            <EventSetter Event="MouseDown" Handler="Drag"/>
+        </Style>
+
+        <Style x:Key="Classic_Control" TargetType="Control">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="10"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Classic_Button" TargetType="Button" BasedOn="{StaticResource Classic_Control}">
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{StaticResource Machine_Bright_Ultra}"/>
+                    <Setter Property="Foreground" Value="{StaticResource Machine}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="1" BorderBrush="{StaticResource Machine}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Warning_Button" TargetType="Button" BasedOn="{StaticResource Classic_Button}">
+            <Setter Property="Background" Value="{StaticResource Warning}"/>
+            <Setter Property="Foreground" Value="{StaticResource Warning_Text}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderThickness="1" BorderBrush="{StaticResource Warning_Dark}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="#e87d7d" Duration="0:0:.1" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)">
+                                    <ColorAnimation.EasingFunction>
+                                        <CircleEase/>
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:.1" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)">
+                                    <ColorAnimation.EasingFunction>
+                                        <CircleEase/>
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="OK_Button" TargetType="Button" BasedOn="{StaticResource Classic_Button}">
+            <Setter Property="Background" Value="{StaticResource OK}"/>
+            <Setter Property="Foreground" Value="{StaticResource OK_Text}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderThickness="1" BorderBrush="{StaticResource OK_Dark}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation To="#98e87d" Duration="0:0:.1" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)">
+                                    <ColorAnimation.EasingFunction>
+                                        <CircleEase/>
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Duration="0:0:.1" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)">
+                                    <ColorAnimation.EasingFunction>
+                                        <CircleEase/>
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox TextChanged="EnableDisableAddButton" Loaded="WebsiteInput_Loaded" LostFocus="WebsiteInput_LostFocus" GotFocus="WebsiteInput_GotFocus" PreviewDragEnter="WebsiteInput_GotFocus" PreviewDragLeave="WebsiteInput_LostFocus" Grid.Column="0"  Name="WebsiteInput" TextAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource Classic_Control}"/>
+
+            <TextBox TextChanged="EnableDisableAddButton" Loaded="PhoneInput_Loaded" LostFocus="PhoneInput_LostFocus" GotFocus="PhoneInput_GotFocus" PreviewDragEnter="PhoneInput_GotFocus" PreviewDragLeave="PhoneInput_LostFocus" Grid.Column="1" Margin="10 0" Name="PhoneInput" TextAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource Classic_Control}"/>
+
+            <Button Name="RegisterButton" Grid.Column="2" Content="Obserwuj" IsEnabled="False" Click="RegisterWebsiteFromInput" Style="{StaticResource OK_Button}"/>
+        </Grid>
+
+        <TabControl Margin="10 0 10 10" Grid.Row="1" Name="Tabs" SelectedIndex="0">
+            <TabControl.Effect>
+                <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="10"/>
+            </TabControl.Effect>
+            <TabItem Header="Monitorowane osoby">
+                <ScrollViewer Style="{StaticResource Classic_ScrollViewer}">
+                    <DataGrid ItemsSource="{Binding Path=MonitoredWebsites, Mode=TwoWay}">
+
+                        <DataGrid.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{Binding Source={StaticResource OK_Dark}, Path=Color}"/>
+                        </DataGrid.Resources>
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Width="Auto" Header="Użytkownik" Binding="{Binding Path=Title}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.Padding" Value="5" />
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Width="*" Header="Adres" Binding="{Binding Path=Address}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.Padding" Value="5" />
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Width="Auto" Header="CPU" Binding="{Binding Path=PingWork}" CanUserResize="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.Padding" Value="5" />
+                                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Width="Auto" Header="Ping" Binding="{Binding Path=PingWeb}" CanUserResize="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.Padding" Value="5" />
+                                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                        </DataGrid.Columns>
+
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+
+                                    <Button Content="Przestań obserwować" Click="UnregisterWebsite" Tag="{Binding}" Style="{StaticResource Warning_Button}" HorizontalAlignment="Center" Padding="20 10" Margin="10" FontSize="16"/>
+                                    
+                                </WrapPanel>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+
+                    </DataGrid>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="Nowe oferty">
+                <ScrollViewer Style="{StaticResource Classic_ScrollViewer}">
+                    <DataGrid Name="NewOffers" ItemsSource="{Binding Path=NewMatches, Mode=TwoWay}" MouseWheel="ScrollViewer_PreviewMouseWheel">
+
+                        <DataGrid.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{Binding Source={StaticResource OK_Dark}, Path=Color}"/>
+                        </DataGrid.Resources>
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Użytkownik" Width="Auto" MinWidth="80" Binding="{Binding Path=Website.Title}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.Padding" Value="5" />
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Header="Opis" Width="*" Binding="{Binding Path=ResultMatch.Groups[description].Value}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.Padding" Value="5" />
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTemplateColumn Header="Wywieszone" Width="Auto" CanUserResize="False">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Center" Padding="5" Background="{Binding Path=DateAdded, Converter={StaticResource DateTimeNowColorConverter}, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Text="{Binding Path=DateAdded, Converter={StaticResource DateTimeNowConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="Cena" Width="Auto" MinWidth="40" CanUserResize="False" Binding="{Binding Path=ResultMatch.Groups[price].Value}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.Padding" Value="5" />
+                                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 0">
+                                        <Button Content="Ignoruj" Click="IgnoreNewOffer" Tag="{Binding}" Style="{StaticResource Warning_Button}" HorizontalAlignment="Center" Padding="20 10" Margin="10" FontSize="16"/>
+                                        <Button Content="Otwórz" Click="CopyAddress" Tag="{Binding}" Style="{StaticResource OK_Button}" HorizontalAlignment="Center" Padding="20 10" Margin="0 10 10 10" FontSize="16"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 0 10 10">
+                                        <Label VerticalAlignment="Center" Margin="0 0 10 0" FontSize="20" Content="Telefon:"/>
+                                        <TextBlock VerticalAlignment="Center" Margin="0 0 10 0" FontSize="20" Text="{Binding Path=Website.PhoneNumber}"/>
+                                    </StackPanel>
+
+                                    <Image MaxWidth="300" MaxHeight="300" Margin="0 0 0 10" Cursor="Hand" MouseDown="EnlargeImageCommand" Source="{Binding Path=ResultMatch.Groups[imagesrc].Value, Converter={StaticResource EnlargeOLXImageConverter}}" Tag="{Binding}">
+                                        <Image.Effect>
+                                            <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="10"/>
+                                        </Image.Effect>
+                                        <Image.ContextMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="Większy obrazek" Click="EnlargeImageCommand" Tag="{Binding}"/>
+                                            </ContextMenu>
+                                        </Image.ContextMenu>
+                                    </Image>
+
+                                    <TextBlock MaxWidth="400" HorizontalAlignment="Center" Margin="0 0 0 10" TextWrapping="Wrap" TextAlignment="Justify" Text="{Binding Path=Details, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Name="SettingsTab" Header="Ustawienia">
+                <ScrollViewer Style="{StaticResource Classic_ScrollViewer}">
+                    <StackPanel Margin="10">
+
+                        <Button Name="RestorePerson" IsEnabled="False" HorizontalAlignment="Left" Content="Przywróć ostatnio usuniętą osobę" Click="RestoreWebsite" Margin="0 0 0 10" Style="{StaticResource OK_Button}"/>
+
+                        <WrapPanel Margin="0 0 0 10"  Orientation="Horizontal">
+                            <CheckBox Cursor="Hand" VerticalAlignment="Center" IsChecked="{Binding Path=Speak, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Wymawiaj ofertę na głos"/>
+                        </WrapPanel>
+
+                        <WrapPanel Margin="0 0 0 10"  Orientation="Horizontal">
+                            <Slider VerticalAlignment="Center" Minimum="0" Maximum="60000" Width="200" TickFrequency="200" IsSnapToTickEnabled="True" Value="{Binding Path=Break, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="{Binding Path=Break}"/>
+                            <Label Content="Przerwa w przetwarzaniu (milisekundy)"/>
+                        </WrapPanel>
+
+                        <WrapPanel Margin="0 0 0 10">
+                            <Button Style="{StaticResource Classic_Button}" Margin="0 0 10 0" Content="Wykonaj kopię zapasową ustawień" HorizontalAlignment="Left" Click="CreateBackup"/>
+                            <Button Style="{StaticResource Classic_Button}" Content="Przywróć ustawienia" HorizontalAlignment="Left" Click="RestoreBackup"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

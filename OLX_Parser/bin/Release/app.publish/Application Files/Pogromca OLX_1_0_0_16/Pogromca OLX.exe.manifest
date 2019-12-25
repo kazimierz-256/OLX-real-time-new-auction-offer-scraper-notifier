@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Notify OLX.exe" version="1.0.0.16" publicKeyToken="abc70044fef95cb4" language="pl-PL" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="notifyolx.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Notify OLX" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Notify OLX.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Notify OLX.exe" size="115120">
+      <assemblyIdentity name="Notify OLX" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>K6AdGcuLRMAmgJxAxM/NmuGsWXhHQlFvLkrBNDWUqVc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Notify OLX.exe.config" size="903">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>uNWz/sADePYy4tKs6RgI1n34nHKr7DQrThajnzVQuQc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="notifyolx.ico" size="28676">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>D9l8GWMTZbQidE4jyuGfH7uWrKUr9XNiWYFJyLtQxq0=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Edu\Kazimierz" issuerKeyHash="e3822c7a91f5054557f4b3d53b9e47ca337e11d3" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>UcEpb1tMWLMlbqMzYtGwdBSbGDD1TSctYT4fDXkv3TM=</DigestValue></Reference></SignedInfo><SignatureValue>GC50iH8n9PlMqmMWJrHWFCwyZJXwIEieY3M4FoLl9KPMLuNruRYmczJ24zHahfFD7u51wYRKEJXKL4omNWT/VotwEFZ6Br+J0j3oICcFUfU6jgiGUzkIPjoE3nLv2UIkFAB2Aou7tDJrvu6i7seIbsWmNyb/L3VuEVC3pKJ7pz4=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>rkyGhXUi71mekuCPD/IGpqaiGwd/pclfaipDl4D/bcUtq9COYAgOHUhDIX8FWU99CdslO5IL0KPNxGK7q/KH0HzYl+uwEbk9omrFPSxl1cw/Wo7JlB2V68T8W7ctBuTvaMM+ZbsevJXeL1kwY1qtxjnEXLVN/EKzMDgDofDNyos=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="33dd2f790d1f3e612d274df530189b1474b0d16233a36e25b3584c5b6f29c151" Description="" Url=""><as:assemblyIdentity name="Notify OLX.exe" version="1.0.0.16" publicKeyToken="abc70044fef95cb4" language="pl-PL" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Edu\Kazimierz</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>uR7b/U29wDJXoHSIBZrI6pXrhxXvmH89enNdhZTQQmc=</DigestValue></Reference></SignedInfo><SignatureValue>h1tZgsjDQS/YlaKuIpk3fs2e1q3I7Hsm8hV0P6kgs50qEXSkUuRHMru9SMrzNtz+koYgGv4VgHZBkHTtyoQ4/MvBlih7h3kMdOFJKjS2Y0MzpqqDJgUzOWiftWa/nPOp3ZpSZI69ssR2jtbip0zo7J1M0qJsgapzfK3nKKTn+/g=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>rkyGhXUi71mekuCPD/IGpqaiGwd/pclfaipDl4D/bcUtq9COYAgOHUhDIX8FWU99CdslO5IL0KPNxGK7q/KH0HzYl+uwEbk9omrFPSxl1cw/Wo7JlB2V68T8W7ctBuTvaMM+ZbsevJXeL1kwY1qtxjnEXLVN/EKzMDgDofDNyos=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQdmhHOWSuAIBMW6JMvoJlZDANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoARQBkAHUAXABLAGEAegBpAG0AaQBlAHIAejAeFw0xNzA3MjUyMzI5MDJaFw0xODA3MjYwNTI5MDJaMCUxIzAhBgNVBAMeGgBFAGQAdQBcAEsAYQB6AGkAbQBpAGUAcgB6MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuTIaFdSLvWZ6S4I8P8gampqIbB3+lyV9qKkOXgP9txS2r0I5gCA4dSEMhfwVZT30J2yU7kgvQo83EYrur8ofQfNiX67ARuT2iasU9LGXVzD9ajsmUHZXrxPxbty0G5O9owz5lux68ld4vWTBjWq3GOcRctU38QrMwOAOh8M3KiwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAHl/yJmlYeNq002Lf7ENXl2iiGBtyvpBhmcyWeNhmrVX06CNH1n/iKLlgg+9vi9vkf6fqdsNDFNbREphDAy9iZ8iVUfGsU0jwy6a4Bhcd0i0rSEMmRst4UGadNnPdM868e0SGZOUFzFq93pl1mvhRJFCckakf0NkOwx7hrq/pB4d</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

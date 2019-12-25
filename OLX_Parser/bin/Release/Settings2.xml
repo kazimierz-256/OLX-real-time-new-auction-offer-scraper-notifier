@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InnerSettings>
+    <Speak>true</Speak>
+<Break>1000</Break>
+  </InnerSettings>
+  <MonitoredWebsites>
+    <MonitoredWebsite>
+      <Title>Magda</Title>
+      <Address>https://www.olx.pl/oferty/uzytkownik/4Gwzv/</Address>
+      <PhoneNumber>1234569</PhoneNumber>
+      <SeenAddresses>
+        <Address>https://www.olx.pl/oferta/kultowy-pojemnik-na-papier-toaletowy-mr-p-the-wiper-CID628-IDnvAM8.html#532c5604dc</Address>
+      </SeenAddresses>
+    </MonitoredWebsite>
+    <MonitoredWebsite>
+      <Title>Jacek</Title>
+      <Address>https://www.olx.pl/oferty/uzytkownik/11LkH/</Address>
+      <PhoneNumber>123456789</PhoneNumber>
+      <SeenAddresses />
+    </MonitoredWebsite>
+  </MonitoredWebsites>
+</Settings>

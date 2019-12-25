@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InnerSettings>
+    <Speak>true</Speak>
+    <Break>5200</Break>
+  </InnerSettings>
+  <MonitoredWebsites>
+    <MonitoredWebsite>
+      <Title>Magda</Title>
+      <Address>https://www.olx.pl/oferty/uzytkownik/4Gwzv/</Address>
+      <PhoneNumber>1234546236</PhoneNumber>
+      <SeenAddresses />
+    </MonitoredWebsite>
+    <MonitoredWebsite>
+      <Title>WISSDOM s.c.</Title>
+      <Address>https://www.olx.pl/oferty/uzytkownik/2S3Ur/</Address>
+      <PhoneNumber>1241245</PhoneNumber>
+      <SeenAddresses>
+        <Address>https://www.olx.pl/oferta/pustaki-szalunkowe-gr-20-25-30-36-40cm-CID628-IDfJbpN.html#9d719a65e0;promoted</Address>
+      </SeenAddresses>
+    </MonitoredWebsite>
+  </MonitoredWebsites>
+</Settings>
