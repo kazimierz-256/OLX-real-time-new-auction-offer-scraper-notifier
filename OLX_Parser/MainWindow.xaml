@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OLX_Parser"
         mc:Ignorable="d"
-        Title="Notify OLX" MinHeight="500" MinWidth="400" Width="500" Height="700" Icon="notifyolx.ico"
+        Title="Notify OLX" MinHeight="500" MinWidth="400" Width="500" Height="700"
         FontFamily="Segoe UI Light" WindowStartupLocation="CenterScreen" UseLayoutRounding="True" SnapsToDevicePixels="True"
         Closing="Window_Closing" ResizeMode="CanResizeWithGrip" MouseMove="Window_MouseMove" MouseDown="Drag">
+        <!-- Icon="notifyolx.ico" -->
     <Window.Resources>
         <local:EnlargeOLXImageConverter x:Key="EnlargeOLXImageConverter" />
         <local:DateTimeNowConverter x:Key="DateTimeNowConverter" />
